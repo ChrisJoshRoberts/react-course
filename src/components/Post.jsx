@@ -1,8 +1,11 @@
-const Post = ({name, title}) => {
+const names = ['John', 'Jane']
+
+const Post = () => {
+  const chosenName = Math.random() < 0.5 ? names[0] : names[1]
   return (
     <div>
-      <h2>{title}</h2>
-      <p>By {name}</p>
+      <h2>{chosenName}</h2>
+      <p></p>
     </div>
   )
 }
