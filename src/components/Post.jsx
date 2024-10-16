@@ -5,7 +5,7 @@ const Post = () => {
   return (
     <div>
       <h2>{chosenName}</h2>
-      <p></p>
+      <p>Interesting text</p>
     </div>
   )
 }
