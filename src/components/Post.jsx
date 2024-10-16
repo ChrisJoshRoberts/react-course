@@ -1,7 +1,7 @@
 const Post = (props) => {
   return (
-    <div>
-      <h2>{props.author}</h2>
+    <div className="post">
+      <h1>{props.author}</h1>
       <p>{props.body}</p>
     </div>
   )
