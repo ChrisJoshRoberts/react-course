@@ -41,3 +41,7 @@
 .read-the-docs {
   color: #888;
 }
+#cancelBtn {
+  background-color: #34036c00;
+  color: white;
+}
