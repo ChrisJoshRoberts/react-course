@@ -1,9 +1,10 @@
 import classes from "./NewPost.module.css"
 import PropTypes from "prop-types"
 import { useState } from "react"
+import { v4 as uuidv4 } from 'uuid';
 
 
-const NewPosts = ({onCancel}) => {
+const NewPosts = ({onCancel, onAddPost}) => {
   const [output, setOutput] = useState('')
   const [author, setAuthor] = useState('')
   // Add a function to handle the change of the body input
@@ -20,7 +21,9 @@ const NewPosts = ({onCancel}) => {
     const postData = {
       body: output,
       author: author,
+      id: uuidv4()
     }
+    onAddPost(postData)
     console.log(postData)
     onCancel()
   }
@@ -43,6 +46,7 @@ const NewPosts = ({onCancel}) => {
   )
 }
 NewPosts.propTypes = {
-  onCancel: PropTypes.func
+  onCancel: PropTypes.func,
+  onAddPost: PropTypes.func
 }
 export default NewPosts
