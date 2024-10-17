@@ -20,7 +20,11 @@ const PostList = ({isPosting, onStopPosting}) => {
   <>
     {isPosting && (
       <Modal onClose={onStopPosting}>
-        <NewPosts onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler}/>
+        <NewPosts
+          onBodyChange={changeBodyHandler}
+          onAuthorChange={changeAuthorHandler}
+          onCancel={onStopPosting}
+        />
       </Modal>
     )}
     <ul className={classes.posts}>
