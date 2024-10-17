@@ -6,13 +6,13 @@ const MainHeader = ({onCreatePost}) => {
   return (
     <header className={classes.header}>
       <div className={classes.logoContainer}>
-        <MdMessage size={25} />
+        <MdMessage color='#fff' size={25} />
         <h1 className={classes.logo}>React Poster</h1>
       </div>
-      <p className={classes.buttonContainer}>
-        <MdPostAdd className={classes.postIcon} size={25}/>
-        <button className={classes.button} onClick={onCreatePost}>New Post</button>
-      </p>
+        <button className={classes.button} onClick={onCreatePost}>
+          <MdPostAdd className={classes.postIcon} size={25}/>
+          New Post
+        </button>
     </header>
   )
 }
