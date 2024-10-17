@@ -30,9 +30,6 @@ const PostList = () => {
     )}
     <ul className={classes.posts}>
       <Post author={author} body={output} />
-      <Post author="Jane" body="Check out the full course" />
-      <Post author="Joe" body="I'm loving every minute of it" />
-      <Post author="Jerry" body="I'm looking for Tom! have you seen him" />
     </ul>
   </>
   )
