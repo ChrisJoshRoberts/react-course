@@ -3,13 +3,10 @@ import classes from './PostsList.module.css'
 import NewPosts from './NewPosts'
 import { useState } from 'react'
 import Modal from './Modal'
-import MainHeader from './MainHeader'
 
-const PostList = () => {
+const PostList = ({isPosting, onStopPosting}) => {
   const [output, setOutput] = useState('')
   const [author, setAuthor] = useState('')
-  const [modalVisable, setModalVisable] = useState(true)
-
   // Add a function to handle the change of the body input
   function changeBodyHandler(event) {
     setOutput(event.target.value)
@@ -18,15 +15,10 @@ const PostList = () => {
   function changeAuthorHandler(event) {
     setAuthor(event.target.value)
   }
-// Hide the modal when the backdrop is clicked
-  function hideModalHandler() {
-    setModalVisable(false)
-  }
   return (
   <>
-    <MainHeader />
-    {modalVisable && (
-      <Modal onClose={hideModalHandler}>
+    {isPosting && (
+      <Modal onClose={onStopPosting}>
         <NewPosts onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler}/>
       </Modal>
     )}

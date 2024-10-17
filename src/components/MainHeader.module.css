@@ -28,8 +28,18 @@
   cursor: pointer;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.button:hover {
+  background-color: #8a6cfb;
+}
 
-  :hover {
-    background-color: #8c6cf7;
-  }
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
