@@ -10,7 +10,7 @@ const MainHeader = ({onCreatePost}) => {
         <h1 className={classes.logo}>React Poster</h1>
       </div>
       <p className={classes.buttonContainer}>
-        <MdPostAdd size={25}/>
+        <MdPostAdd className={classes.postIcon} size={25}/>
         <button className={classes.button} onClick={onCreatePost}>New Post</button>
       </p>
     </header>

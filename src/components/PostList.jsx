@@ -3,6 +3,7 @@ import classes from './PostsList.module.css'
 import NewPosts from './NewPosts'
 import { useState } from 'react'
 import Modal from './Modal'
+import PropTypes from 'prop-types'
 
 const PostList = ({isPosting, onStopPosting}) => {
   const [output, setOutput] = useState('')
@@ -27,6 +28,11 @@ const PostList = ({isPosting, onStopPosting}) => {
     </ul>
   </>
   )
+}
+
+PostList.propTypes = {
+  isPosting: PropTypes.bool,
+  onStopPosting: PropTypes.func
 }
 
 export default PostList
