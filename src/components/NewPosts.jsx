@@ -1,8 +1,8 @@
-
+import classes from "./NewPost.module.css"
 
 const NewPosts = () => {
   return (
-    <form>
+    <form className={classes.form}>
       <p>
         <label htmlFor="body">Text</label>
         <textarea id="body" required rows={3} />

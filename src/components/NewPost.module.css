@@ -5,6 +5,7 @@
   margin: 2rem auto;
   border-radius: 6px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-align: left;
 }
 
 .form label {
@@ -12,4 +13,20 @@
   margin-bottom: 0.05rem;
   color: #eadbfb;
   font-weight: bold;
+}
+
+textarea,
+input {
+  background-color: rgba(255, 255, 255, 0.635);
+  width: 95%;
+  border-radius: 8px;
+  font-family: 'Helvetica';
+  font-size: 1rem;
+  border: none;
+  color: #6233b9;
+  padding: 8px;
+}
+
+input {
+  height: 24px;
 }
