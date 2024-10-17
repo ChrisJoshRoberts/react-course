@@ -5,6 +5,7 @@
   border-radius: 8px;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
   animation: animate-in 1s ease-out forwards;
+  list-style-type: none;
 }
 
 .author {
