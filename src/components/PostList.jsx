@@ -3,6 +3,7 @@ import classes from './PostsList.module.css'
 import NewPosts from './NewPosts'
 import { useState } from 'react'
 import Modal from './Modal'
+import MainHeader from './MainHeader'
 
 const PostList = () => {
   const [output, setOutput] = useState('')
@@ -23,6 +24,7 @@ const PostList = () => {
   }
   return (
   <>
+    <MainHeader />
     {modalVisable && (
       <Modal onClose={hideModalHandler}>
         <NewPosts onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler}/>

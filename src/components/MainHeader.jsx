@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 
 const MainHeader = ({onCreatePost}) => {
   return (
-    <header classname={classes.header}>
+    <header className={classes.header}>
       <MdMessage />
-      <h1 classname={classes.logo}>React Poster</h1>
+      <h1 className={classes.logo}>React Poster</h1>
       <p>
         <MdPostAdd size={10}/>
         <button className={classes.button} onClick={onCreatePost}>New Post</button>
