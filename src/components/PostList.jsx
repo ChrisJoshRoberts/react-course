@@ -21,11 +21,19 @@ const PostList = ({isPosting, onStopPosting}) => {
         />
       </Modal>
     )}
-    <ul className={classes.posts}>
-      {posts.map((post) => (
-        <Post key={post.id} author={post.author} body={post.body} />
-      ))}
-    </ul>
+    {posts.length > 0 &&
+      <ul className={classes.posts}>
+        {posts.map((post) => (
+          <Post key={post.id} author={post.author} body={post.body} />
+        ))}
+      </ul>
+    }
+
+    {posts.length === 0 &&
+    <p className={classes.noPosts}>
+      No posts yet. Start adding some
+    !</p>}
+
   </>
   )
 }
