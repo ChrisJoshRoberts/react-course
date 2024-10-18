@@ -20,6 +20,7 @@ const NewPosts = ({onCancel, onAddPost}) => {
     const postData = {
       body: output,
       author: author,
+      id: Math.random().toString()
     }
     onAddPost(postData)
     console.log(postData)

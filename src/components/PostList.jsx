@@ -26,33 +26,36 @@ const PostList = ({isPosting, onStopPosting}) => {
       }
 
     });
-    setPosts((existingPosts) => [postData, ...existingPosts])
+    setPosts((existingPosts) => ({
+      ...existingPosts,
+      posts: [postData, ...existingPosts.posts]
+    }));
   }
   return (
-  <>
-    {isPosting && (
-      <Modal onClose={onStopPosting}>
-        <NewPosts
-          onCancel={onStopPosting}
-          onAddPost={addPostHandler}
-        />
-      </Modal>
-    )}
-    {posts.length > 0 &&
-      <ul className={classes.posts}>
-        {posts.map((post) => (
-          <Post key={post.body} author={post.author} body={post.body} />
-        ))}
-      </ul>
-    }
-
-    {posts.length === 0 &&
-    <p className={classes.noPosts}>
-      No posts yet. Start adding some
-    !</p>}
-
-  </>
+    <>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
+          <NewPosts
+            onCancel={onStopPosting}
+            onAddPost={addPostHandler}
+          />
+        </Modal>
+      )}
+      
+      {/* Check if posts.posts exists and has items */}
+      {posts.posts && posts.posts.length > 0 ? (
+        <ul className={classes.posts}>
+          {posts.posts.map((post) => (
+            <Post key={post.id} author={post.author} body={post.body} />
+          ))}
+        </ul>
+      ) : (
+        // Show message if there are no posts
+        <p className={classes.noPosts}>No posts yet. Start adding some!</p>
+      )}
+    </>
   )
+  
 }
 
 PostList.propTypes = {
