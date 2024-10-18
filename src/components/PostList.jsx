@@ -1,11 +1,9 @@
 import Post from './Post'
 import classes from './PostsList.module.css'
-import NewPosts from './NewPosts'
-import Modal from './Modal'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 
-const PostList = ({isPosting, onStopPosting}) => {
+const PostList = () => {
   const [posts, setPosts] = useState([])
   const [isFetching, setSsFetching] = useState(false)
 
@@ -14,6 +12,9 @@ const PostList = ({isPosting, onStopPosting}) => {
       setSsFetching(true)
       const response = await fetch('http://localhost:8080/posts')
       const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.message || 'Could not fetch posts.')
+      }
       setPosts(data)
       setSsFetching(false)
     }
@@ -36,15 +37,6 @@ const PostList = ({isPosting, onStopPosting}) => {
   }
   return (
     <>
-      {isPosting && (
-        <Modal onClose={onStopPosting}>
-          <NewPosts
-            onCancel={onStopPosting}
-            onAddPost={addPostHandler}
-          />
-        </Modal>
-      )}
-      
       {/* Check if posts.posts exists and has items */}
       {!isFetching && posts.posts && posts.posts.length > 0 &&(
         <ul className={classes.posts}>

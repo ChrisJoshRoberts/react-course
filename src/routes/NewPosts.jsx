@@ -1,9 +1,11 @@
 import classes from "./NewPost.module.css"
 import PropTypes from "prop-types"
 import { useState } from "react"
+import Modal from "../components/Modal"
+import { Link } from "react-router-dom"
 
 
-const NewPosts = ({onCancel, onAddPost}) => {
+const NewPosts = ({onAddPost}) => {
   const [output, setOutput] = useState('')
   const [author, setAuthor] = useState('')
   // Add a function to handle the change of the body input
@@ -24,24 +26,24 @@ const NewPosts = ({onCancel, onAddPost}) => {
     }
     onAddPost(postData)
     console.log(postData)
-    onCancel()
   }
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <p>
-        <label htmlFor="body">Text</label>
-        <textarea id="body" required rows={3} onChange={changeBodyHandler} />
-      </p>
-      <p>
-        <label htmlFor="name">Your name</label>
-        <input type="text" id="name" required  onChange={changeAuthorHandler}/>
-      </p>
-      <div className={classes.actions}>
-        <button id="cancelBtn" type="button" onClick={onCancel}>Cancel</button>
-        <button>Submit</button>
-      </div>
-
-    </form>
+    <Modal>
+      <form className={classes.form} onSubmit={submitHandler}>
+        <p>
+          <label htmlFor="body">Text</label>
+          <textarea id="body" required rows={3} onChange={changeBodyHandler} />
+        </p>
+        <p>
+          <label htmlFor="name">Your name</label>
+          <input type="text" id="name" required  onChange={changeAuthorHandler}/>
+        </p>
+        <div className={classes.actions}>
+          <Link to=".." id="cancelBtn" type="button">Cancel</Link>
+          <button>Submit</button>
+        </div>
+      </form>
+    </Modal>
   )
 }
 NewPosts.propTypes = {
