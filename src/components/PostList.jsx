@@ -3,10 +3,19 @@ import classes from './PostsList.module.css'
 import NewPosts from './NewPosts'
 import Modal from './Modal'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const PostList = ({isPosting, onStopPosting}) => {
   const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const response = await fetch('http://localhost:8080/posts')
+      const data = await response.json()
+      setPosts(data)
+    }
+    fetchPosts()
+  }, [])
 
   function addPostHandler(postData) {
     fetch('http://localhost:8080/posts', {
