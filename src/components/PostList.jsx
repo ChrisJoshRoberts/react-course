@@ -7,12 +7,15 @@ import { useState, useEffect } from 'react'
 
 const PostList = ({isPosting, onStopPosting}) => {
   const [posts, setPosts] = useState([])
+  const [isFetching, setSsFetching] = useState(false)
 
   useEffect(() => {
     async function fetchPosts() {
+      setSsFetching(true)
       const response = await fetch('http://localhost:8080/posts')
       const data = await response.json()
       setPosts(data)
+      setSsFetching(false)
     }
     fetchPosts()
   }, [])
@@ -43,16 +46,23 @@ const PostList = ({isPosting, onStopPosting}) => {
       )}
       
       {/* Check if posts.posts exists and has items */}
-      {posts.posts && posts.posts.length > 0 ? (
+      {!isFetching && posts.posts && posts.posts.length > 0 &&(
         <ul className={classes.posts}>
           {posts.posts.map((post) => (
             <Post key={post.id} author={post.author} body={post.body} />
           ))}
         </ul>
-      ) : (
-        // Show message if there are no posts
+      )}
+
+      {!isFetching && posts.posts && posts.posts.length === 0 && (
+         // Show message if there are no posts
         <p className={classes.noPosts}>No posts yet. Start adding some!</p>
       )}
+      {isFetching && 
+        <div>
+          <p className={classes.loading}>Loading...</p>
+        </div>
+      }
     </>
   )
   

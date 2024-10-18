@@ -17,3 +17,12 @@
   color: white;
   height: 70vh;
 }
+.loading {
+  font-size: 2rem;
+}
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
