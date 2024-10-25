@@ -1,4 +1,4 @@
-import CategoryCard from '../test/CategoryCard'
+
 import Post from './Post'
 import classes from './PostsList.module.css'
 import PropTypes from 'prop-types'
@@ -6,21 +6,6 @@ import { useLoaderData } from 'react-router-dom'
 
 const PostList = () => {
   const posts = useLoaderData()
-
-  function addPostHandler(postData) {
-    fetch('http://localhost:8080/posts', {
-      method: 'POST',
-      body: JSON.stringify(postData),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-
-    });
-    setPosts((existingPosts) => ({
-      ...existingPosts,
-      posts: [postData, ...existingPosts.posts]
-    }));
-  }
   return (
     <>
     <div>
@@ -31,11 +16,6 @@ const PostList = () => {
           ))}
         </ul> 
       )}
-      <CategoryCard 
-      tag="Category"
-      title="Nom du partenaire"
-      content="Notre partenaire en..."
-    /> 
     </div>
 
       {posts.length === 0 && (
